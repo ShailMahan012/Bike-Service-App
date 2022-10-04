@@ -8,19 +8,14 @@ add.click(add_service);
 submit.click(submit_data);
 
 function add_service() {
-    var newRow = document.createElement('div');
-    var colName = document.createElement('div');
-    var colPrice = document.createElement('div');
-    var colCross = document.createElement('div');
+    var newRow = document.createElement('tr');
+    var colName = document.createElement('td');
+    var colPrice = document.createElement('td');
+    var colCross = document.createElement('td');
     var Name = document.createElement('input');
     var Price = document.createElement('input');
     var Cross = document.createElement('button');
 
-    newRow.classList = "row service_row";
-
-    colName.classList = "col";
-    colPrice.classList = "col";
-    colCross.classList = "col-sm-2";
 
     newRow.id = "service_" + service_row_id;
     Name.classList = "form-control form-control-sm services_input";
