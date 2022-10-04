@@ -47,7 +47,7 @@
                         echo "<td>". $row['model'] . "</td>";
                         echo "<td>". $row['plate_number'] . "</td>";
                         echo "<td><a class='btn btn-danger' href='delete.php?id=". $row['id'] . "'>X</a>
-                                <a class='btn btn-primary' href='print?id=". $row['id'] . "'>Print</a>
+                                <a class='btn btn-primary' href='invoice.php?id=". $row['id'] . "'>Print</a>
                             </td>";
                         echo "</tr>";
                     }

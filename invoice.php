@@ -1,6 +1,7 @@
 <?php 
 	require 'database.php';
 	$id =  $_GET["id"];
+	echo $id;
 ?>
 
 
