@@ -23,7 +23,6 @@ if (count($all_data["services"]) > 0) {
 
     $insert_sql = substr($insert_sql, 0, -2);
     $insert_sql .= ";";
-    // echo $insert_sql;
 
     $conn->query($insert_sql);
 }
