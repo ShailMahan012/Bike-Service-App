@@ -1,7 +1,11 @@
 <?php 
 	require 'database.php';
-	$id =  $_GET["id"];
-	echo $id;
+	$order_id =  $_GET["id"];
+	
+	$sql_query = "SELECT * FROM orders where id=$order_id;";
+	$order = $conn->query($sql_query)->fetch_assoc();
+	$sql_query = "SELECT * from services WHERE order_id=$order_id";
+	$services = $conn->query($sql_query);
 ?>
 
 
@@ -9,7 +13,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>A simple, clean, and responsive HTML invoice template</title>
+		<title>Bike Service Center</title>
 
 		<style>
 			.invoice-box {
@@ -118,9 +122,8 @@
 								</td>
 
 								<td>
-									Invoice #: 123<br />
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+									Invoice #: <?php echo $order_id;?><br />
+									Date: <?php echo $order['date'];?>
 								</td>
 							</tr>
 						</table>
@@ -138,16 +141,14 @@
 								</td>
 
 								<td>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
+									<?php echo $order['c_name'] . "<br>" . $order['num'];?>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 
-				<tr class="heading">
+				<!-- <tr class="heading">
 					<td>Payment Method</td>
 
 					<td>Check #</td>
@@ -157,38 +158,32 @@
 					<td>Check</td>
 
 					<td>1000</td>
-				</tr>
+				</tr> -->
 
 				<tr class="heading">
 					<td>Item</td>
 
 					<td>Price</td>
 				</tr>
-
-				<tr class="item">
-					<td>Website design</td>
-
-					<td>$300.00</td>
-				</tr>
-
-				<tr class="item">
-					<td>Hosting (3 months)</td>
-
-					<td>$75.00</td>
-				</tr>
-
-				<tr class="item last">
-					<td>Domain name (1 year)</td>
-
-					<td>$10.00</td>
-				</tr>
-
+				<?php
+					$total_price = 0;
+					while($service = $services->fetch_assoc()) {
+						echo "<tr class='item'>";
+						echo "<td>" . $service['service'] . "</td>";
+						echo "<td>" . $service['price'] . "</td>";
+						echo "</tr>";
+						$total_price += $service['price'];
+					}
+				?>
 				<tr class="total">
 					<td></td>
 
-					<td>Total: $385.00</td>
+					<td>Total: <?php echo $total_price; ?></td>
 				</tr>
 			</table>
 		</div>
+		<script>
+			window.print();
+		</script>
 	</body>
 </html>
