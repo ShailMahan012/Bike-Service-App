@@ -20,12 +20,12 @@
 				max-width: 800px;
 				margin: auto;
 				padding: 30px;
-				border: 1px solid #eee;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				/* border: 1px solid #eee; */
+				/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
 				font-size: 16px;
 				line-height: 24px;
 				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-				color: #555;
+				color: black;
 			}
 
 			.invoice-box table {
@@ -58,11 +58,14 @@
 			}
 
 			.invoice-box table tr.heading td {
-				background: #eee;
+				background: #ffffff;
 				border-bottom: 1px solid #ddd;
 				font-weight: bold;
 			}
 
+			tr.heading {
+				background: #000000;
+			}
 			.invoice-box table tr.details td {
 				padding-bottom: 20px;
 			}
@@ -160,7 +163,7 @@
 					<td>1000</td>
 				</tr> -->
 
-				<tr class="heading">
+				<tr class="heading" style="">
 					<td>Item</td>
 
 					<td>Price</td>
