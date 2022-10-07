@@ -90,6 +90,7 @@
             </thead>
             <tbody id="services"></tbody>
         </table>
+        <span>Discount: <input class="form-control form-control-sm" id="discount" value=0 style="width: 10%;display: inline;"><b><label>PERCENTAGE</label></b></span>
         <span>Total Price: <b><label id="total_price">0</label></b></span>
         <button type="button" class="btn btn-primary" id="submit">Send All Data</button>
 

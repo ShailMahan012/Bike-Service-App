@@ -2,10 +2,14 @@ var add = $("#add");
 var services = $("#services")[0];
 var submit = $("#submit");
 var total_price = $("#total_price")[0];
+var discount = $("#discount");
+
 service_row_id = 0
 
 add.click(add_service);
 submit.click(submit_data);
+discount.change(updatePrice);
+
 
 function add_service() {
     var newRow = document.createElement('tr');
@@ -87,13 +91,14 @@ function submit_data() {
 function updatePrice() {
     var services_price = $(".services_price");
     var total_price_value = 0;
+    var discount_value = discount[0].value;
     for (i = 0; i < services_price.length; i++) {
         var price = parseInt(services_price[i].value);
         if (!price) price = 0
         total_price_value += price;
     }
+    total_price_value = total_price_value * (100-discount_value) / 100;
     total_price.innerText = total_price_value;
-    console.log(total_price_value);
 }
 
 function delServiceRow(row_id) {
@@ -104,7 +109,6 @@ function delServiceRow(row_id) {
 
 function get_order_id() {
     var order_id_label = $("#order_id")[0]
-    console.log(order_id_label);
     $.ajax({
         type: "get",
         url: "get_order_id.php",
